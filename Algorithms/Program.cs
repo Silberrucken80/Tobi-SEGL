@@ -1,2 +1,65 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿int[] cards = [3, 5, 7, 8, 9];
+int[] cards2 = new int[50000000];
+// 50_000_000
+// 25_000_000
+// 12_500_000
+// 6_250_000
+for (int i = 0; i < cards2.Length; i++)
+{
+    cards2[i] = i + 1;
+}
+
+// int[] cards = {3, 5, 7, 8, 9};
+int query = 9;
+
+var result = FindCardLocationBinarySearch(cards, query);
+Console.WriteLine("Index von gesuchtem Element in cards: " + result);
+// Console.WriteLine(cards2[10]);
+var result2 = FindCardLocationBinarySearch(cards2, 40_942_069); // 40_942_068
+Console.WriteLine("Index von gesuchtem Element in cards2: " + result2);
+
+// Binary Search => O(log(n))
+int FindCardLocationBinarySearch(int[] cards, int query)
+{
+    int min = 0;
+    int max = cards.Length - 1;
+
+    while (min <= max)
+    {
+        int mid = (min + max) / 2;
+
+        if (query == cards[mid])
+        {
+            return mid;
+        }
+        else if (query < cards[mid])
+        {
+            max = mid - 1;
+        }
+        else
+        {
+            min = mid + 1;
+        }
+    }
+    return -1;
+}
+
+// Linear Search => O(n)
+int FindCardLocation(int[] cards, int query)
+{
+    /*
+    Definiere Variable "index" und initialisiere mit Wert 0
+    Wiederhole bis "index" gleich "cards" length:
+        Wenn "cards" an "index" gleich "query", dann:
+            Gebe "index" zurück
+    Inkrementiere "index" um 1
+    */
+    int index = 0;
+    while (index < cards.Length)
+    {
+        if (cards[index] == query)
+            return index;
+        index++; // index = index + 1;
+    }
+    return -1;
+}
