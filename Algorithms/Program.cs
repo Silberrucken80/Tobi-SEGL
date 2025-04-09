@@ -21,8 +21,8 @@ Console.WriteLine("Index von gesuchtem Element in cards: " + result);
 var result2 = Algorithms.FindCardLocationBinarySearch(cards2, 40_942_069); // 40_942_068
 Console.WriteLine("Index von gesuchtem Element in cards2: " + result2);
 */
-using BenchmarkDotNet.Reports;
+//using BenchmarkDotNet.Reports;
+
 using BenchmarkDotNet.Running;
 
-
-Summary? summary = BenchmarkRunner.Run<Algorithms>();
+var summary = BenchmarkRunner.Run<Algorithms>();
